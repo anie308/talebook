@@ -38,4 +38,5 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useForgotMutation,
+    useResetMutation
 } = authRoute;

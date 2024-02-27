@@ -5,11 +5,12 @@ import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "@/assets/svg/talelogo.svg";
 import { toast } from "@backpackapp-io/react-native-toast";
-import { useForgotMutation } from "@/services/routes/auth";
+import { useForgotMutation, useResetMutation } from "@/services/routes/auth";
 
 const OnetimePassword = ({ route }: any) => {
   const { email: passedEmail } = route?.params;
   const [forgot] = useForgotMutation();
+  const [reset] = useResetMutation();
   const navigation = useNavigation();
 
   const [form, setForm] = React.useState({
@@ -34,7 +35,15 @@ const OnetimePassword = ({ route }: any) => {
   };
 
   const handleReset = async () => {
-    console.log(form, "form");
+    try {
+      const res = await reset(form).unwrap();
+      toast.success(`${res.message}`);
+      navigation.navigate("login");
+      console.log(res);
+    } catch (error: Error | any) {
+      toast.error(`${error.data.message}`);
+      console.log(error);
+    }
   };
 
   return (

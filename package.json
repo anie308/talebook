@@ -10,7 +10,7 @@
     "prebuild-android": "npx expo prebuild --platform android",
     "build-prev-android": "eas build -p android --profile preview",
     "deploy": "eas update --auto",
-    "update-prev": "eas update --branch preview"
+    "update": "eas update --branch preview"
   },
   "dependencies": {
     "@backpackapp-io/react-native-toast": "^0.10.0",
@@ -24,6 +24,7 @@
     "expo-secure-store": "~12.8.1",
     "expo-splash-screen": "~0.26.4",
     "expo-status-bar": "~1.11.1",
+    "expo-updates": "~0.24.11",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "0.73.4",

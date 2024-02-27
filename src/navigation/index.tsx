@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from "@react-navigation/native";
 import AuthStack from './stacks/auth.stack';
@@ -13,7 +12,7 @@ const Route = () => {
   return (
     <NavigationContainer>
       {
-        token ? <MainStack/> : <AuthStack/>
+        token ?  <MainStack/> : <AuthStack/>
       }
      
     </NavigationContainer>

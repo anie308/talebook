@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1 bg-background">
       <StatusBar style="dark" />
       <View className="mt-[5%]">
         <View className="w-full flex-row items-center justify-between px-[20px]">
@@ -80,7 +80,9 @@ const Login = () => {
             disabled={isLoading && true}
             className="w-full h-[50px] disabled:bg-gray-400 rounded-full items-center justify-center flex-row bg-primary p-[8px] mt-[10%]"
           >
-            <Text className="font-Rmedium text-white">Login</Text>
+            {
+              isLoading? <ActivityIndicator color="#fff" /> : <Text className="text-white font-Rregular text-[14px]">Login</Text>
+            }
           </TouchableOpacity>
           <View className="flex-row items-center justify-between w-full mt-[3%]">
             <TouchableOpacity
