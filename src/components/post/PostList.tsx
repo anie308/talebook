@@ -4,7 +4,6 @@ import { useGetFeedQuery } from "@/services/routes/posts";
 import { useSelector } from "react-redux";
 import PostCard from "./PostCard";
 
-
 const PostList = () => {
   const token = useSelector((state) => state.auth.token);
   console.log(token);
@@ -19,48 +18,27 @@ const PostList = () => {
   };
   return (
     <View className="w-full py-[20px] ">
-      {/* <ScrollView
-        showsVerticalScrollIndicator={false}
-        className="flex-col space-y-[20px]"
-        refreshControl={
-          <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
-        }
-      > */}
-        {isLoading && <Text>Loading...</Text>}
-        {isSuccess &&
-          
-            <FlatList
-            refreshControl={
-                <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
-            }
-            showsVerticalScrollIndicator={false}
-            data={posts}
-
-            renderItem={({item}) => (
-              <PostCard
+      {isLoading && <Text>Loading...</Text>}
+      {isSuccess && (
+        <FlatList
+          refreshControl={
+            <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
+          }
+          showsVerticalScrollIndicator={false}
+          data={posts}
+          renderItem={({ item }) => (
+            <PostCard
               time={item.createdAt}
               image={item?.media?.url}
               author={item.ownerName}
               title={item.title}
               content={item.content}
-                key={item.id}
-
-            
+              key={item.id}
             />
-            )}
-            />
-            // <PostCard
-            // time={post.createdAt}
-            //   image={
-            //     post?.media?.url}
-            //   author={post.ownerName}
-            //   title={post.title}
-            //   content={post.content}
-            //   key={index}
-            // />
-          }
-        {error && <Text>Error fetching posts</Text>}
-      {/* </ScrollView> */}
+          )}
+        />
+      )}
+      {error && <Text>Error fetching posts</Text>}
     </View>
   );
 };

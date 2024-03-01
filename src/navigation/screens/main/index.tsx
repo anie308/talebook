@@ -7,7 +7,7 @@ import PostList from "@/components/post/PostList";
 const Home = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <StatusBar style="dark" backgroundColor="white" />
+      <StatusBar style="auto"  />
       <View className=" p-[15px_20px]  flex-row items-center justify-between">
         <Text className="font-Rbold text-[18px]">Feed</Text>
         <View className="flex-row justify-end items-center ">
